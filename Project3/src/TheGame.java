@@ -1,8 +1,6 @@
 /**
  * Created by flame on 4/23/2017.
  */
-import sun.awt.image.ImageWatched;
-
 import java.util.LinkedList;
 import java.util.Scanner;
 public class TheGame {
