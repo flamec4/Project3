@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -34,8 +35,13 @@ public class GUI extends Application {
         Bot AI = new Bot();
         Person player = new Person();
 
-        newPile.setOnAction(e -> game.addPile()
-        );
+        newPile.setOnAction(e -> {
+            String[] cards = game.addPile();
+            for(int i = 0; i < 4; i++) {
+                computerPane.add(new ImageView(cards[i]),1,i);
+            }
+
+        });
 
         newHand.setOnAction(e ->{
             player.getHand();

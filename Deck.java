@@ -24,12 +24,15 @@ public class Deck extends GUI {
         deck2 = deck;
     }
 
-    public void addPile(){
+    public String[] addPile(){
         java.util.Collections.shuffle(this.deck);
+        String[] pilec = new String[4];
         for (int i = 0; i < 4; i++) {
             this.pile.add(this.deck.get(i));
+            pilec[i] = this.deck.get(i);
             this.deck.remove(i);
         }
+        return pilec;
     }
 
     public LinkedList<String> giveDeck(){
