@@ -24,9 +24,11 @@ public class GUI extends Application {
 
         Button newPile = new Button("New Pile");
         Button newHand = new Button("New Hands");
+        Button makeDeck = new Button("Make Deck");
 
         computerPane.add(newPile,0,1);
         computerPane.add(newHand,0,2);
+        computerPane.add(makeDeck,0,3);
 
         Deck game = new Deck();
         Bot AI = new Bot();
@@ -37,7 +39,10 @@ public class GUI extends Application {
 
         newHand.setOnAction(e ->{
             player.getHand();
-            AI.getHand();
+        });
+
+        makeDeck.setOnAction(e ->{
+            game.makeDeck();
         });
 
 

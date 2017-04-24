@@ -15,6 +15,9 @@ public class Deck extends GUI {
     String top = "";
 
     Deck() {
+
+    }
+    public void makeDeck(){
         for (int i = 1; i < 53; i++) {
             this.deck.add("card/" + i + ".png");
         }
@@ -35,13 +38,12 @@ public class Deck extends GUI {
 
 
     public String dealHand() {
-            int index = randomGen.nextInt(deck.size());
-            deck.remove(index);
-            if (deck.get(index) == null) {
+            int index = randomGen.nextInt(this.deck.size());
+            this.deck.remove(index);
+            if (this.deck.get(index) == null) {
                 dealHand();
             }
-            return deck.get(index);
-
+            return this.deck.get(index);
     }
 
     public String topCard(){
