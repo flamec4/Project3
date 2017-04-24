@@ -12,10 +12,17 @@ public class Deck extends GUI {
     LinkedList<String> deck = new LinkedList<>();
     LinkedList<String> pile = new LinkedList<>();
     LinkedList<String> deck2 = deck;
+
+    LinkedList<String> playHand = new LinkedList<>();
+
+
     String top = "";
 
-    Deck() {
+    Deck(){
+    }
 
+    Deck(LinkedList<String> playHand) {
+        super();
     }
     public void makeDeck(){
         for (int i = 1; i < 53; i++) {
@@ -35,21 +42,20 @@ public class Deck extends GUI {
         return pilec;
     }
 
-    public LinkedList<String> giveDeck(){
-        return deck2;
+
+    public LinkedList<String> dealHand() {
+
+
+        for (int i = 0; i < 4; i++) {
+            playHand.add(this.deck.getFirst());
+            this.deck.removeFirst();
+                }
+
+        return playHand;
     }
 
-
-    public String[] dealHand() {
-
-            String[] playHand = new String[4];
-            for(int i = 0; i < 4; i++){
-                playHand[i] = this.deck.getFirst();
-                this.deck.removeFirst();
-            }
-
-            return playHand;
-    }
+    Bot AI = new Bot(playHand);
+    Person player = new Person(playHand);
 
     public String topCard(){
         top = pile.getFirst();

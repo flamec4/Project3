@@ -11,22 +11,18 @@ public class Bot extends Person {
     LinkedList<String> fDeck = new LinkedList<>();
     String topCard = "";
 
-    public Bot(){
-        super();
+    Bot(){
     }
 
-
-    public String[] getHand(){
-        String[] handsize;
-        handsize = super.dealHand();
-
-        for(int i = 0; i < 4; i++){
-            myHand.add(handsize[i]);
-        }
-        return  handsize;
+    public Bot(LinkedList<String> playHand){
+        super(playHand);
     }
+
 
     public String takeTurn(){
+
+        myHand.addAll(playHand);
+
         topCard = super.topCard();
         Scanner topScan = new Scanner(topCard).useDelimiter("[^0-9]+");
         int currentCard = topScan.nextInt();
@@ -54,5 +50,8 @@ public class Bot extends Person {
         }
         return cardChoice;
     }
+
+
+
 
 }

@@ -11,6 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.util.LinkedList;
+
 public class GUI extends Application {
     public GUI(){
     }
@@ -23,13 +25,16 @@ public class GUI extends Application {
         computerPane.setHgap(5.5);
         computerPane.setVgap(5.5);
 
+
         Button newPile = new Button("New Pile");
         Button newHand = new Button("New Hands");
         Button makeDeck = new Button("Make Deck");
+        Button addPoints = new Button("Add Points Up");
 
         computerPane.add(newPile,0,1);
         computerPane.add(newHand,0,2);
         computerPane.add(makeDeck,0,3);
+        computerPane.add(addPoints,0,4);
 
         Deck game = new Deck();
         Bot AI = new Bot();
@@ -44,15 +49,19 @@ public class GUI extends Application {
         });
 
         newHand.setOnAction(e ->{
-            String[] cards2 = AI.getHand();
-            for(int i = 0; i < 4;i++){
-                computerPane.add(new ImageView(cards2[i]),2,i);
+            LinkedList<String> hand;
+            hand = AI.getMyHand();
+            for(int p = 0; p < 4;p++){
+                computerPane.add(new ImageView(hand.get(p)),3,p);
             }
-
         });
 
         makeDeck.setOnAction(e ->{
             game.makeDeck();
+        });
+
+        addPoints.setOnAction(e -> {
+            game.dealHand();
         });
 
 

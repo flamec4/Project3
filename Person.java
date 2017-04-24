@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Created by flame on 4/19/2017.
@@ -8,24 +9,17 @@ import java.util.ArrayList;
 public class Person extends Deck {
 
 
-    ArrayList<String> myHand = new ArrayList<>();
+    LinkedList<String> myHand = new LinkedList<>();
     ArrayList<String> myCards = new ArrayList<>();
     int Score = 0;
 
-
-    Person() {
+    Person(){
     }
 
-    public String[] getHand(){
-        String[] personHand;
-        personHand = super.dealHand();
-
-        for(int i = 0; i < 4; i++){
-            myHand.add(personHand[i]);
-        }
-        return  personHand;
-
+    Person(LinkedList<String> playHand) {
+        super(playHand);
     }
+
 
     public void Play(Card myCard, Deck myDeck){
 
