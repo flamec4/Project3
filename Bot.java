@@ -16,10 +16,14 @@ public class Bot extends Person {
     }
 
 
-    public void getHand(){
+    public String[] getHand(){
+        String[] handsize;
+        handsize = super.dealHand();
+
         for(int i = 0; i < 4; i++){
-            myHand.add(super.dealHand());
+            myHand.add(handsize[i]);
         }
+        return  handsize;
     }
 
     public String takeTurn(){

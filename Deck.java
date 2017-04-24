@@ -22,15 +22,15 @@ public class Deck extends GUI {
             this.deck.add("card/" + i + ".png");
         }
         deck2 = deck;
+        java.util.Collections.shuffle(this.deck);
     }
 
     public String[] addPile(){
-        java.util.Collections.shuffle(this.deck);
         String[] pilec = new String[4];
         for (int i = 0; i < 4; i++) {
-            this.pile.add(this.deck.get(i));
-            pilec[i] = this.deck.get(i);
-            this.deck.remove(i);
+            this.pile.add(this.deck.getFirst());
+            pilec[i] = this.deck.getFirst();
+            this.deck.removeFirst();
         }
         return pilec;
     }
@@ -40,13 +40,15 @@ public class Deck extends GUI {
     }
 
 
-    public String dealHand() {
-            int index = randomGen.nextInt(this.deck.size());
-            this.deck.remove(index);
-            if (this.deck.get(index) == null) {
-                dealHand();
+    public String[] dealHand() {
+
+            String[] playHand = new String[4];
+            for(int i = 0; i < 4; i++){
+                playHand[i] = this.deck.getFirst();
+                this.deck.removeFirst();
             }
-            return this.deck.get(index);
+
+            return playHand;
     }
 
     public String topCard(){

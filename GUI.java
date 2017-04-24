@@ -16,7 +16,7 @@ public class GUI extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        //final String[] cards2;
         GridPane computerPane = new GridPane();
         computerPane.setAlignment(Pos.CENTER);
         computerPane.setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
@@ -44,7 +44,11 @@ public class GUI extends Application {
         });
 
         newHand.setOnAction(e ->{
-            player.getHand();
+            String[] cards2 = AI.getHand();
+            for(int i = 0; i < 4;i++){
+                computerPane.add(new ImageView(cards2[i]),2,i);
+            }
+
         });
 
         makeDeck.setOnAction(e ->{

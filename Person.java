@@ -16,10 +16,15 @@ public class Person extends Deck {
     Person() {
     }
 
-    public void getHand(){
+    public String[] getHand(){
+        String[] personHand;
+        personHand = super.dealHand();
+
         for(int i = 0; i < 4; i++){
-            myHand.add(super.dealHand());
+            myHand.add(personHand[i]);
         }
+        return  personHand;
+
     }
 
     public void Play(Card myCard, Deck myDeck){
