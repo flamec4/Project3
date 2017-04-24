@@ -40,10 +40,12 @@ public class GUI extends Application {
         Bot AI = new Bot();
         Person player = new Person();
 
+        String[] botHandCopy = new String[4];
+
         newPile.setOnAction(e -> {
-            String[] cards = game.addPile();
+            String[] cardsPile = game.addPile();
             for(int i = 0; i < 4; i++) {
-                computerPane.add(new ImageView(cards[i]),1,i);
+                computerPane.add(new ImageView(cardsPile[i]),1,i);
             }
             game.topCard();
         });
@@ -53,6 +55,10 @@ public class GUI extends Application {
             cards = game.playHand;
             for(int p = 0; p < 4;p++){
                 computerPane.add(new ImageView(cards[0][p]),3,p);
+            }
+
+            for(int i = 0; i < 4; i++){
+                botHandCopy[i] = cards[0][i];
             }
 
         });
@@ -69,7 +75,10 @@ public class GUI extends Application {
 
         takeTurnBot.setOnAction(e -> {
             game.topCard();
-            AI.takeTurn(game.playHand,game.top);
+            String choice = "";
+            choice = AI.takeTurn(game.playHand,game.top);
+            computerPane.add(new ImageView(choice),2,1);
+
         });
 
 

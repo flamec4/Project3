@@ -32,21 +32,26 @@ public class Bot extends Person {
         }
 
         String cardChoice = "";
+        String cardCopy = "";
         for(int j = 0; j < 4; j++){
             if(inHand[j]%13 == currentCard%13){
                 cardChoice = myHand.get(j);
-               winPile = super.wonPile(myHand.get(j));
+                cardCopy = cardChoice;
+                myHand.remove(j);
             }
             else if(inHand[j]%13 == 11 ){
                 cardChoice = myHand.get(j);
-               winPile = super.wonPile(myHand.get(j));
+                cardCopy = cardChoice;
+                myHand.remove(j);
             }
             else if(j == 3){
                 cardChoice = myHand.get(j);
-                super.discard(myHand.get(j));
+                cardCopy = cardChoice;
+                myHand.remove(j);
             }
         }
-        return cardChoice;
+
+        return cardCopy;
     }
 
     public double addPoints(String card, LinkedList<String> pile){

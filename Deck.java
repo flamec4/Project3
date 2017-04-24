@@ -2,6 +2,8 @@
  * Created by flame on 4/19/2017.
  */
 //Only 2 players, bot and player
+import sun.awt.image.ImageWatched;
+
 import java.util.LinkedList;
 
 public class Deck extends GUI {
@@ -10,8 +12,8 @@ public class Deck extends GUI {
     LinkedList<String> deck = new LinkedList<>();
     LinkedList<String> pile = new LinkedList<>();
     LinkedList<String> deck2 = deck;
-
-    String[][] playHand = new String[2][4];
+    
+    LinkedList<String> playHand = new LinkedList<>();
 
 
     String top = "";
