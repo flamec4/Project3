@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -14,16 +15,13 @@ public class Bot extends Person {
     Bot(){
     }
 
-    public Bot(LinkedList<String> playHand){
-        super(playHand);
-    }
 
 
-    public String takeTurn(){
+    public String takeTurn(String[][] botHand,String topCard){
 
-        myHand.addAll(playHand);
+        myHand.addAll(Arrays.asList(botHand[0]).subList(0, 4));
 
-        topCard = super.topCard();
+
         Scanner topScan = new Scanner(topCard).useDelimiter("[^0-9]+");
         int currentCard = topScan.nextInt();
         int[] inHand = new int[4];

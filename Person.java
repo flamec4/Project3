@@ -16,9 +16,6 @@ public class Person extends Deck {
     Person(){
     }
 
-    Person(LinkedList<String> playHand) {
-        super(playHand);
-    }
 
 
     public void Play(Card myCard, Deck myDeck){

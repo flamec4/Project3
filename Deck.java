@@ -3,17 +3,15 @@
  */
 //Only 2 players, bot and player
 import java.util.LinkedList;
-import java.util.Random;
 
 public class Deck extends GUI {
 
 
-    private Random randomGen = new Random();
     LinkedList<String> deck = new LinkedList<>();
     LinkedList<String> pile = new LinkedList<>();
     LinkedList<String> deck2 = deck;
 
-    LinkedList<String> playHand = new LinkedList<>();
+    String[][] playHand = new String[2][4];
 
 
     String top = "";
@@ -21,9 +19,8 @@ public class Deck extends GUI {
     Deck(){
     }
 
-    Deck(LinkedList<String> playHand) {
-        super();
-    }
+
+
     public void makeDeck(){
         for (int i = 1; i < 53; i++) {
             this.deck.add("card/" + i + ".png");
@@ -43,23 +40,20 @@ public class Deck extends GUI {
     }
 
 
-    public LinkedList<String> dealHand() {
+    public void dealHand() {
 
+        for (int p = 0; p < 2; p++) {
+            for (int i = 0; i < 4; i++) {
+                playHand[p][i] = deck.getFirst();
+                this.deck.removeFirst();
+            }
 
-        for (int i = 0; i < 4; i++) {
-            playHand.add(this.deck.getFirst());
-            this.deck.removeFirst();
-                }
-
-        return playHand;
+        }
     }
 
-    Bot AI = new Bot(playHand);
-    Person player = new Person(playHand);
 
-    public String topCard(){
+    public void topCard(){
         top = pile.getFirst();
-        return top;
     }
 
     public LinkedList<String> wonPile(String wCard){
