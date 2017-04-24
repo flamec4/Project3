@@ -49,6 +49,13 @@ public class Bot extends Person {
         return cardChoice;
     }
 
+    public double addPoints(String card, LinkedList<String> pile){
+
+        double points = 0;
+
+        return points;
+    }
+
 
 
 
